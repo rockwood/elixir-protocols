@@ -1,4 +1,4 @@
-class A::Rectangle
+class Rectangle
   def initialize(width, height)
     @width = width
     @height = height
@@ -9,7 +9,7 @@ class A::Rectangle
   end
 end
 
-class B::Circle
+class Circle
   def initialize(radius)
     @radius = radius
   end
@@ -23,7 +23,7 @@ class B::Circle
   end
 end
 
-class B::Printer
+class Printer
   def self.print(shape)
     puts "Area: #{shape.area}"
     puts "Perimeter: #{shape.perimeter}"

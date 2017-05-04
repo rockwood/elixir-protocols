@@ -1,45 +1,45 @@
-defprotocol A.Area do
+defprotocol Area do
   def calc(shape)
 end
 
-defmodule A.Rectangle do
+defmodule Rectangle do
   defstruct length: 0, width: 0
 
-  defimpl A.Area do
+  defimpl Area do
     def calc(%{length: length, width: width}) do
       length * width
     end
   end
 end
 
-defprotocol B.Perimeter do
+defprotocol Perimeter do
   def calc(shape)
 end
 
-defmodule B.Printer do
+defmodule Printer do
   def print(shape) do
-    IO.puts A.Area.calc(shape)
-    IO.puts B.Perimeter.calc(shape)
+    IO.puts Area.calc(shape)
+    IO.puts Perimeter.calc(shape)
   end
 end
 
-defmodule C.Circle do
+defmodule Circle do
   defstruct radius: 0
 
-  defimpl A.Area do
+  defimpl Area do
     def calc(%{radius: radius}) do
       :math.pi() * :math.pow(radius, 2)
     end
   end
 
-  defimpl B.Perimeter do
+  defimpl Perimeter do
     def calc(%{radius: radius}) do
       2 * :math.pi() * radius
     end
   end
 end
 
-defimpl B.Perimeter, for: A.Rectangle do
+defimpl Perimeter, for: Rectangle do
   def calc(%{length: length, width: width}) do
     2 * length + 2 * width
   end
